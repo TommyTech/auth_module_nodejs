@@ -1,5 +1,6 @@
 import './mocks/oauth';
 import assert from 'assert';
+import express from 'express';
 import reqres from 'reqres';
 
 import createRouter from '../src/router';
@@ -8,7 +9,7 @@ import nockGetAprofiel from './mocks/user';
 import { nockGetSessions } from './mocks/sessionStore';
 import { onlyLowSession } from './mocks/sessionStoreResponses';
 
-const mockExpress = require('express')();
+const mockExpress = express();
 
 describe('test # login callback', () => {
   it('callback redirect to errorRedirect when no code in query', (done) => {

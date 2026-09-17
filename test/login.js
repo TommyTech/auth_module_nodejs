@@ -1,9 +1,10 @@
 import assert from 'assert';
+import express from 'express';
 import reqres from 'reqres';
 import createRouter from '../src/router';
 import correctConfig from './mocks/correctConfig';
 
-const mockExpress = require('express')();
+const mockExpress = express();
 
 describe('GET /login', () => {
   it('should redirect to login', (done) => {

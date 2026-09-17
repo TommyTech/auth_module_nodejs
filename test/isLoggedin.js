@@ -1,10 +1,11 @@
 import assert from 'assert';
+import express from 'express';
 import reqres from 'reqres';
 import createRouter from '../src/router';
 import correctConfig from './mocks/correctConfig';
-import user from './mocks/user.json';
+import { user } from './mocks/user';
 
-const mockExpress = require('express')();
+const mockExpress = express();
 
 describe('GET /isLoggedin', () => {
   it('#isLoggedin() should return user of session', (done) => {

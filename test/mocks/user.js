@@ -1,5 +1,9 @@
+import { readFileSync } from 'fs';
 import nock from 'nock';
-import user from './user.json';
+
+export const user = JSON.parse(
+  readFileSync(new URL('./user.json', import.meta.url), 'utf8'),
+);
 
 export default function nockGetAprofiel(apiHost, status) {
   nock(apiHost)

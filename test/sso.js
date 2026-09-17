@@ -1,3 +1,4 @@
+import './mocks/oauth';
 import assert from 'assert';
 import reqres from 'reqres';
 

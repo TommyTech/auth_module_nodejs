@@ -1,32 +1,21 @@
 import * as uuid from 'uuid';
-import mockery from 'mockery';
+import nock from 'nock';
+import config from './correctConfig';
 
-mockery.enable({
-  useCleanCache: true,
-  warnOnReplace: false,
-  warnOnUnregistered: false,
-});
-
-class OAuth2 {
-  constructor(clientId, clientSecret, apiHost, irr1, endpoint) {
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
-    this.apiHost = apiHost;
-    this.endpoint = endpoint;
-  }
-
-  getOAuthAccessToken(code, options, callback) {
-    this.code = code;
-    this.accessTokenOptions = options;
-    const token = uuid.v4();
-    const refresh = uuid.v4();
-    setTimeout(() => callback(null, token, refresh, {
-      access_token: token,
-      expires_in: 2 * 60 * 60,
-    }));
-  }
+function nockTokenEndpoint(host) {
+  nock(host)
+    .persist()
+    .post('/oauth2/token')
+    .reply(200, () => {
+      const token = uuid.v4();
+      const refresh = uuid.v4();
+      return {
+        access_token: token,
+        refresh_token: refresh,
+        expires_in: 2 * 60 * 60,
+      };
+    });
 }
 
-mockery.registerMock('oauth', {
-  OAuth2,
-});
+nockTokenEndpoint(config.url);
+nockTokenEndpoint(config.consentUrl);

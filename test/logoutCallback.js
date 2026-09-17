@@ -1,10 +1,11 @@
 import assert from 'assert';
+import express from 'express';
 import reqres from 'reqres';
 import createRouter from '../src/router';
 
 import correctConfig from './mocks/correctConfig';
 
-const mockExpress = require('express')();
+const mockExpress = express();
 
 describe('GET /logout/callback', () => {
   it('should remove session when callback is triggered', (done) => {

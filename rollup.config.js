@@ -1,7 +1,9 @@
+import { readFileSync } from 'fs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import pkg from './package.json';
+
+const pkg = JSON.parse(readFileSync('./package.json', 'utf8'));
 
 export default {
   input: 'src/index.js',

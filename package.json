@@ -6,10 +6,10 @@
   "module": "dist/index.es.js",
   "types": "index.d.ts",
   "engines": {
-    "node": ">=15.0.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
-    "build": "npx rollup -c --exports default",
+    "build": "rollup -c --exports default",
     "prepublish": "npm run build",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
@@ -28,13 +28,23 @@
   "dependencies": {
     "async": "~3.2.4",
     "bcryptjs": "~2.4.3",
-    "cookie": "~0.5.0",
-    "express": "~4.18.2",
+    "cookie": "~0.7.2",
+    "express": "~4.22.3",
     "isomorphic-fetch": "~3.0.0",
     "lodash.get": "~4.4.2",
     "oauth": "~0.10.0",
     "pino": "~8.8.0",
-    "uuid": "~9.0.0"
+    "uuid": "~11.1.1"
+  },
+  "overrides": {
+    "cookie": "$cookie",
+    "send": "^0.19.0",
+    "serve-static": "^1.16.0",
+    "body-parser": "^1.20.6",
+    "qs": "^6.14.2",
+    "express": {
+      "path-to-regexp": "0.1.13"
+    }
   },
   "devDependencies": {
     "@babel/core": "~7.20.12",
@@ -55,6 +65,7 @@
     "mockery": "~2.1.0",
     "nock": "~13.3.0",
     "nyc": "~15.1.0",
-    "reqres": "~3.0.1"
+    "reqres": "~3.0.1",
+    "rollup": "~3.29.4"
   }
 }

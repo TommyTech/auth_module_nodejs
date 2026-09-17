@@ -83,7 +83,7 @@ describe('GET /logout', () => {
   it('should store logoutFromUrl', (done) => {
     const router = createRouter(mockExpress, correctConfig);
     const host = 'http://www.app.com';
-    const fromUrl = 'http://from.com';
+    const fromUrl = 'https://www.test.com/return';
     const req = reqres.req({
       url: '/auth/logout',
       query: {
